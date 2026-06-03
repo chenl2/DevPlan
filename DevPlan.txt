@@ -1,0 +1,21 @@
+cret.NextWalkTime := pm.WalkSpeed;
+cret.WalkStep     := pm.WalkStep;
+cret.WalkWaitTime := pm.WalkWait;
+cret.NextHitTime  := pm.AttackSpeed;
+
+/// RunNextTick := 250 for all creatures.
+Current - RunTime > RunNextTick:
+  RunTime = Current
+
+/// For ObjGuard.
+1. 250ms timer for scheduler.
+2. HitTimer, getting from data base.
+3. last target or search a new target.
+4. to attack the target.
+5. 在攻击间隔内一直会攻击同一个目标，
+
+Next Plan:
+1. 道士技能 -> 人物中毒/打防/打魔/盾/隐身/...
+2. Monster Dictionary -> 怪物死亡/怪物刷新
+3. procedure TAnimal.RunMsg (msg: TMessageInfo);
+4. ExtraAbil可以实现
