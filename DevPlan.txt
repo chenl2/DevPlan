@@ -16,6 +16,24 @@ Current - RunTime > RunNextTick:
 
 Next Plan:
 1. 道士技能 -> 人物中毒/打防/打魔/盾/隐身/...
-2. Monster Dictionary -> 怪物死亡/怪物刷新
+2. Monster Dictionary -> 怪物死亡/怪物刷新 -> 挖肉
 3. procedure TAnimal.RunMsg (msg: TMessageInfo);
 4. ExtraAbil可以实现
+5. SM_CHARSTATUSCHANGED;发送人物状态(中毒)以及攻速;
+6. 检查SM_ADJUST_BONUS是否需要,看起来是操作属性点的功能,感觉可以删除.
+7. 检查SM_MYSTATUS,其实可以不需要了,但是的话可以看一下图片状态是什么样.
+8. 检查SM_RUSH逻辑,在客户端就做了3秒触发的限制了.
+9. 删除SM_MOVEFAIL.
+A.
+B.
+C.
+D.
+E.
+F.
+
+SM_DEATH:
+SM_NOWDEATH:
+屏幕没有: actor.SendMsg (msg.Ident, msg.param{x}, msg.Tag{y}, msg.Series{damage}, desc.Feature, desc.Status, '', 0);
+屏幕存在: PlayScene.SendMsg (SM_DEATH, msg.Recog, msg.param{x}, msg.Tag{y}, msg.Series{damage}, desc.Feature, desc.Status, 0, '');
+
+
