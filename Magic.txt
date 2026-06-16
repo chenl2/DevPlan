@@ -1,0 +1,19 @@
+///
+/// GetSWSpell:     Round(pum.pDef.Spell / (pum.pDef.MaxTrainLevel+1) * (pum.Level+1));
+/// GetSpellPoint:  Round(pum.pDef.Spell / (pum.pDef.MaxTrainLevel+1) * (pum.Level+1)) + pum.pDef.DefSpell;
+///
+pm.Spell := FieldByName('Spell').AsInteger;
+pm.DefSpell := FieldByName('DefSpell').AsInteger;
+
+///
+/// MPow
+///
+pm.MinPower := FieldByName('Power').AsInteger;
+pm.MaxPower := FieldByName('MaxPower').AsInteger;
+
+///
+/// GetPower
+/// GetPower13
+///
+pm.DefMinPower := FieldByName('DefPower').AsInteger;
+pm.DefMaxPower := FieldByName('DefMaxPower').AsInteger;

@@ -1,0 +1,70 @@
+TCreature
+│
+└─ TAnimal
+   │
+   ├─ TUserHuman
+   │
+   ├─ TStickMonster
+   │   └─ TCentipedeKingMonster
+   │
+   ├─ TBeeQueen
+   ├─ TBigHeartMonster
+   ├─ TBamTreeMonster
+   ├─ TSpiderHouseMonster
+   ├─ TSoccerBall
+   │
+   ├─ TGuardUnit
+   │   ├─ TArcherGuard
+   │   │   └─ TArcherPolice
+   │   ├─ TCastleDoor
+   │   └─ TWallStructure
+   │
+   ├─ TMonster
+   │   │
+   │   ├─ TChickenDeer
+   │   │
+   │   ├─ TLightingZombi
+   │   ├─ TDigOutZombi
+   │   │
+   │   ├─ TScultureMonster
+   │   │   └─ TScultureKingMonster
+   │   │       └─ TSkeletonKingMonster
+   │   │           ├─ TDeadCowKingMonster
+   │   │           └─ TBanyaGuardMonster
+   │   │
+   │   ├─ TElfMonster
+   │   │
+   │   ├─ TATMonster
+   │   │   │
+   │   │   ├─ TSlowATMonster
+   │   │   ├─ TScorpion
+   │   │   ├─ TCowMonster
+   │   │   ├─ TMagCowMonster
+   │   │   ├─ TCowKingMonster
+   │   │   ├─ TZilKinZombi
+   │   │   ├─ TWhiteSkeleton
+   │   │   ├─ TCriticalMonster
+   │   │   ├─ TDoubleCriticalMonster
+   │   │   ├─ TSkeletonSoldier
+   │   │   │
+   │   │   ├─ TSpitSpider
+   │   │   │   ├─ THighRiskSpider
+   │   │   │   ├─ TBigPoisionSpider
+   │   │   │   └─ TElfWarriorMonster
+   │   │   │
+   │   │   └─ TGasAttackMonster
+   │   │       ├─ TGasMothMonster
+   │   │       └─ TGasDungMonster
+   │   │
+   │   ├─ TDualAxeMonster
+   │   │   ├─ TThornDarkMonster
+   │   │   └─ TArcherMonster
+   │   │
+   │   └─ TExplosionSpider
+   │
+   └─ TNormNpc
+       ├─ TMerchant
+       │   └─ TCastleManager
+       ├─ TGuildOfficial
+       ├─ TTrainer
+       └─ TSuperGuard
