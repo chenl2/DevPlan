@@ -1,0 +1,53 @@
+  ┌─ 我是怪物 (RaceServer >= RC_ANIMAL)
+  │  ├─ 我有主人 (奴隶/宠物)
+  │  │   攻击条件（任一满足）：
+  │  │   • target 正在攻击主人 (Master.LastHiter/ExpHiter/TargetCret)
+  │  │   • target 的目标是主人
+  │  │   • target 正在攻击我 (TargetCret == self)
+  │  │   • target 的主人是主人的敌人
+  │  │   不攻击条件：
+  │  │   •target 和我是同一个主人的奴隶 →FALSE
+  │  │   •target 被圣言 (BoHolySeize) →FALSE
+  │  │   •主人休息模式 (BoSlaveRelax) →FALSE
+  │  │   •target 是玩家且在安全区 →FALSE
+  │  │
+  │  └─ 我没有主人 (野生怪物)
+  │      攻击条件：
+  │      •target 是玩家 →TRUE
+  │      •我是攻击型 NPC →TRUE
+  │      •target 有主人（是别人的奴隶）→TRUE
+  │
+  │  特殊情况：狂暴模式 (BoCrazyMode) →无条件 TRUE
+  │
+  └─ 我是玩家或NPC
+     ├─ 我是玩家
+     │   switch HumAttackMode:
+     │     HAM_ALL:    除了 NPC 之外都能打
+     │     HAM_PEACE:  只能打怪物
+     │     HAM_GROUP:  除了队友之外都能打
+     │     HAM_GUILD:  除了行会成员/同盟之外都能打
+     │     HAM_PKATTACK: 按善恶规则：红名打白名OK，白名打红名OK，同色不打
+     │   └─ 每种模式都过一遍 NonPKServer 规则
+     └─ 我是 NPC →TRUE（NPC 可以攻击任何目标）
+
+  最终过滤：
+    target 是管理员模式 (BoSysopMode) 或石化状态 (BoStoneMode) →FALSE
+
+
+  ---
+  第二层：IsProperTarget(target) 额外校验
+
+  1. _IsProperTarget 通过后
+  2. 如果双方都是玩家 →CheckAttackRule2(PK规则)
+  3. 如果我是玩家 且 target 有主人(是别人的宠物):
+     •target 的主人是自己 →只有 HAM_ALL 模式才能打自己宠物
+     •target 的主人是别人 →递归检查 target.Master 的合法性
+     •自己或 target 在安全区 →FALSE
+
+  ---
+  CheckAttackRule2 —PK 规则
+
+  •自己或对方在安全区 →FALSE
+  •红名大号(>=2, Lv>10) 打 白名新手(Lv<=10) →FALSE（保护新手）
+  •白名新手 打 红名大号 →FALSE（新手打不过）
+  •换地图 3 秒内 →FALSE（切图保护）
